@@ -26,7 +26,10 @@ avoid adding features or APIs which do not map onto the
     Click to see more.
   </summary>
 
+- Add `gist` operator class (see [#42], thanks [@abelvm])
+
 </details>
+
 
 ## [3.7.1] - 2021-06-23
 
@@ -178,7 +181,11 @@ avoid adding features or APIs which do not map onto the
 [#31]: https://github.com/bytesandbrains/h3-pg/pull/31
 [#37]: https://github.com/bytesandbrains/h3-pg/issues/37
 [#38]: https://github.com/bytesandbrains/h3-pg/issues/38
+<<<<<<< HEAD
 [#41]: https://github.com/bytesandbrains/h3-pg/issues/41
+=======
+[#42]: https://github.com/bytesandbrains/h3-pg/issues/42
+>>>>>>> 371058d (WIP: GiST support)
 [@abelvm]: https://github.com/AbelVM
 [@komzpa]: https://github.com/Komzpa
 [@kmacdough]: https://github.com/kmacdough

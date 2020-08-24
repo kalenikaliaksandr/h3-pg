@@ -19,14 +19,14 @@
 
 #include <h3api.h> // Main H3 include
 
-void		_PG_init(void);
+void _PG_init(void);
 extern bool h3_guc_strict;
 
 typedef struct
 {
-	H3Index    *indices;
-	int		   *distances;
-}	hexDistanceTuple;
+	H3Index *indices;
+	int *distances;
+} hexDistanceTuple;
 
 #define MAX_H3_RES 15
 
@@ -41,9 +41,9 @@ typedef struct
  */
 
 #ifdef USE_FLOAT8_BYVAL
-#define DatumGetH3Index(X) ((H3Index) (X))
+#define DatumGetH3Index(X) ((H3Index)(X))
 #else
-#define DatumGetH3Index(X) (* ((H3Index *) DatumGetPointer(X)))
+#define DatumGetH3Index(X) (*((H3Index *)DatumGetPointer(X)))
 #endif
 
 /*
@@ -55,9 +55,9 @@ typedef struct
  */
 
 #ifdef USE_FLOAT8_BYVAL
-#define H3IndexGetDatum(X) ((Datum) (X))
+#define H3IndexGetDatum(X) ((Datum)(X))
 #else
-#define H3IndexGetDatum(X) Int64GetDatum((int64) (X))
+#define H3IndexGetDatum(X) Int64GetDatum((int64)(X))
 #endif
 
 /* Macros for fetching arguments and returning results of h3 index type */
@@ -66,8 +66,8 @@ typedef struct
 #define PG_RETURN_H3INDEX(x) return H3IndexGetDatum(x)
 
 /*	helper functions to return sets from user fctx */
-Datum		srf_return_h3_indexes_from_user_fctx(PG_FUNCTION_ARGS);
-Datum		srf_return_h3_index_distances_from_user_fctx(PG_FUNCTION_ARGS);
+Datum srf_return_h3_indexes_from_user_fctx(PG_FUNCTION_ARGS);
+Datum srf_return_h3_index_distances_from_user_fctx(PG_FUNCTION_ARGS);
 
 /*	macros to pass on fcinfo to above helpers */
 #define SRF_RETURN_H3_INDEXES_FROM_USER_FCTX() \
@@ -75,28 +75,29 @@ Datum		srf_return_h3_index_distances_from_user_fctx(PG_FUNCTION_ARGS);
 #define SRF_RETURN_H3_INDEX_DISTANCES_FROM_USER_FCTX() \
 	return srf_return_h3_index_distances_from_user_fctx(fcinfo)
 
-#define ASSERT(condition, code, msg, ...)  \
-	if (0 == (condition)) ereport(ERROR, ( \
-		errcode(code),					   \
-		errmsg(msg, ##__VA_ARGS__)		   \
-	))
+#define ASSERT(condition, code, msg, ...) \
+	if (0 == (condition))                 \
+	ereport(ERROR, (                      \
+					   errcode(code),     \
+					   errmsg(msg, ##__VA_ARGS__)))
 
 #define ASSERT_EXTERNAL(condition, msg, ...) \
 	ASSERT(condition, ERRCODE_EXTERNAL_ROUTINE_EXCEPTION, msg, ##__VA_ARGS__)
 
-#define ENSURE_TYPEFUNC_COMPOSITE(x)				   \
-	ASSERT(											   \
-		x == TYPEFUNC_COMPOSITE,					   \
-		ERRCODE_INVALID_PARAMETER_VALUE,			   \
+#define ENSURE_TYPEFUNC_COMPOSITE(x)                   \
+	ASSERT(                                            \
+		x == TYPEFUNC_COMPOSITE,                       \
+		ERRCODE_INVALID_PARAMETER_VALUE,               \
 		"Function returning record called in context " \
-		"that cannot accept type record"			   \
-	)
+		"that cannot accept type record")
 
-#define DEBUG(msg, ...)			   \
-	ereport(ERROR, (			   \
-		errmsg(msg, ##__VA_ARGS__) \
-	))
+#define DEBUG(msg, ...) \
+	ereport(ERROR, (    \
+					   errmsg(msg, ##__VA_ARGS__)))
 
 #define DEBUG_H3INDEX(h3index) DEBUG("index: %lx", h3index)
+#define PRINT_H3INDEX(h3index) \
+	ereport(NOTICE, (          \
+						errmsg("index: %lx", h3index)))
 
 #endif

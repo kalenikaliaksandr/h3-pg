@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 Bytes & Brains
+ * Copyright 2019-2020 Bytes & Brains
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
--- complain if script is sourced in psql, rather than via CREATE EXTENSION
-\echo Use "ALTER EXTENSION h3 UPDATE TO 'unreleased'" to load this file. \quit
 
 -- ---------- ---------- ---------- ---------- ---------- ---------- ----------
 -- GiST Operator Class (opclass_gist.c)
