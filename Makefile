@@ -13,3 +13,7 @@ installcheck:
 	cmake --build build --target installcheck
 
 .PHONY: cmake
+
+docs/api.md: $(wildcard h3/sql/install/*.sql)
+	python .github/documentation/generate.py "h3/sql/install/*" > $@
+	npx doctoc $@
