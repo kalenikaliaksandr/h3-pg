@@ -19,14 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Debug
-        run: |
-          echo "${env:PGROOT};${env:PATH}"
-          $env:PATH = "${env:PGROOT};${env:PATH}"
-
       - name: Configure build
         run: |
-          $env:PATH = 'C:/PROGRA~1/POSTGR~1/14/bin;' + $env:PATH
+          $env:PATH = "${env:PGBIN};${env:PATH}"
           cmake -B build .
 
       - name: Build
