@@ -21,6 +21,7 @@ jobs:
 
       - name: Debug
         run: |
+          $env:PATH = 'C:/PROGRA~1/POSTGR~1/14/bin;' + $env:PATH
           pg_config
 
       - name: Configure build
