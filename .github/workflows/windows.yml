@@ -21,7 +21,9 @@ jobs:
 
       - name: Debug
         run: |
-          $env:PATH = $env:PGROOT + ';' + $env:PATH
+          echo ${env:PGROOT}
+          dir env:
+          $env:PATH = "${env:PGROOT};${env:PATH}"
           pg_config
 
       - name: Configure build
