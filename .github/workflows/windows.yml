@@ -13,15 +13,15 @@ jobs:
 
     strategy:
       matrix:
-        config: [Release, Debug]
+        #config: [Release, Debug]
+        config: [Release]
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Debug
         run: |
-          ls C:\Strawberry\c\include\postgresql\server\
-          echo $PGROOT
+          pg_config
 
       - name: Configure build
         run: |
