@@ -8,7 +8,7 @@ set(BUILD_GENERATORS                OFF CACHE INTERNAL "")
 
 FetchContent_Declare(h3
   GIT_REPOSITORY https://github.com/uber/h3.git
-  GIT_TAG master
+  GIT_TAG v3.7.2
 )
 FetchContent_MakeAvailable(h3)
 

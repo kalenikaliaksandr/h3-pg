@@ -41,7 +41,9 @@ set(UPDATE_SQL_FILES
         updates/h3--3.6.3--3.6.4.sql
         updates/h3--3.6.4--3.6.5.sql
         updates/h3--3.6.5--3.7.0.sql
-        updates/h3--3.7.0--unreleased.sql
+        updates/h3--3.7.0--3.7.1.sql
+        updates/h3--3.7.1--3.7.2.sql
+        updates/h3--3.7.2--unreleased.sql
 )
 
 foreach(file ${INSTALL_SQL_FILES})

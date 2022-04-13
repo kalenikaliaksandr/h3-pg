@@ -1,17 +1,17 @@
 #!/usr/bin/env sh
 set -e
 
-sudo -u postgres mkdir build
+chmod -R a+w build
 
 service postgresql start
 
 cd build
 
 # first regular cmake
-sudo -u postgres cmake -S ..
-sudo -u postgres cmake --build .
+su postgres -p -c "cmake -S .."
+su postgres -p -c "cmake --build ."
 cmake --install . --component extension # sudo
-sudo -u postgres ctest --output-on-failure
+su postgres -p -c "ctest --output-on-failure"
 
 cd ..
 rm -rf build

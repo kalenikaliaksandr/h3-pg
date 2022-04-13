@@ -2,7 +2,13 @@
 set -e
 set -u
 
-rm -rf build
 
-docker build -t tmp --file .tmp-tools/Dockerfile .
-docker run --rm -v "$PWD":/github/workspace tmp
+BASEDIR=$(dirname $(realpath "$0"))
+
+cd $BASEDIR
+
+sudo rm -rf ../build
+mkdir ../build
+
+docker build -t tmp .
+docker run --rm -v "$PWD"/..:/github/workspace tmp
