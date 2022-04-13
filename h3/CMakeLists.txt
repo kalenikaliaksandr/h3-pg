@@ -3,10 +3,9 @@ set(EXT_NAME h3)
 add_subdirectory(sql)
 add_subdirectory(src)
 
-# temp remove: while working on github actions
-#if(BUILD_TESTING)
-#  add_subdirectory(test)
-#endif()
+if(BUILD_TESTING)
+  add_subdirectory(test)
+endif()
 
 set(EXT_CONTROL_FILE ${EXT_NAME}.control)
 configure_file(${EXT_CONTROL_FILE} ${EXT_CONTROL_FILE})
