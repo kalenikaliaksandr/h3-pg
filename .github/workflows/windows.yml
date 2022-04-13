@@ -20,9 +20,8 @@ jobs:
 
       - name: Debug
         run: |
-          ls C:/PROGRA~1/POSTGR~1
-          ls C:/PROGRA~1/POSTGR~1/server
-          ls C:/PROGRA~1/POSTGR~1/14
+          ls C:\Strawberry\c\include\postgresql\server\
+          echo $PGROOT
 
       - name: Configure build
         run: |
