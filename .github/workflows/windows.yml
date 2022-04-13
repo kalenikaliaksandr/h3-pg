@@ -18,9 +18,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Debug
+        run: |
+          ls C:/PROGRA~1/POSTGR~1
+          ls C:/PROGRA~1/POSTGR~1/server
+          ls C:/PROGRA~1/POSTGR~1/14
+
       - name: Configure build
         run: |
-          $env:PATH = 'C:/PROGRA~1/POSTGR~1/13/bin;' + $env:PATH
+          $env:PATH = 'C:/PROGRA~1/POSTGR~1/14/bin;' + $env:PATH
           cmake -B build .
 
       - name: Build
