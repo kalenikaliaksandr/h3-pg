@@ -202,7 +202,7 @@ h3_line(PG_FUNCTION_ARGS)
 		H3Index		start = PG_GETARG_H3INDEX(0);
 		H3Index		end = PG_GETARG_H3INDEX(1);
 		int			size = h3LineSize(start, end);
-		H3Index    *indices = palloc(size * sizeof(H3Index));
+		H3Index    *indices = palloc_extended(size * sizeof(H3Index), MCXT_ALLOC_HUGE | MCXT_ALLOC_ZERO);
 
 		int			result = h3Line(start, end, indices);
 
